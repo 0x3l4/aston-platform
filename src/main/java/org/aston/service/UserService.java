@@ -24,31 +24,36 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        return (User) userDao.get(id).get();
+        Optional<User> userOpt = userDao.get(id);
+
+        if (userOpt.isEmpty())
+            return null;
+
+        return userOpt.get();
     }
 
-    public boolean updateUser(Long id, String name, String email) {
-        User user = (User) userDao.get(id).get();
-        if (user == null) return false;
+    public boolean updateUser(Long id, String name, String email, int age) {
+        Optional<User> userOpt = userDao.get(id);
+        if (userOpt.isEmpty()) return false;
 
-        if (name == null ||
-                name.isBlank() ||
-                email == null ||
-                email.isBlank())
-            return false;
+        User user = userOpt.get();
+
+        if (name != null && !name.isBlank()) user.setName(name);
+        if (email != null && !email.isBlank()) user.setEmail(email);
+        if (age > 0) user.setAge(age);
 
 
-        userDao.update(user, );
+        userDao.update(user);
         return true;
     }
 
     public boolean deleteUser(Long id) {
-        User user = userDao.findById(id);
-        if (user == null) return false;
-        userDao.delete(id);
+        Optional<User> userOpt = userDao.get(id);
+
+        if (userOpt.isEmpty())
+            return false;
+
+        userDao.delete(userOpt.get());
         return true;
     }
-
-    public void close() {
-        userDao.close();
-    }
+}

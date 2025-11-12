@@ -1,19 +1,28 @@
 package org.aston.dao;
 
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaQuery;
 import org.aston.model.User;
 import org.aston.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
 
 public class UserDao implements Dao<User> {
+    private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
+
     @Override
     public Optional<User> get(long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Optional<User> userOpt = Optional.ofNullable(session.get(User.class, id));
+
+            if (userOpt.isEmpty())
+                logger.info("No user with this id was found: {}", id);
+            else
+                logger.info("User was found: {}", userOpt.get());
+
             return Optional.ofNullable(session.get(User.class, id));
         }
     }
@@ -21,7 +30,7 @@ public class UserDao implements Dao<User> {
     @Override
     public List<User> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from users", User.class).list();
+            return session.createQuery("from User", User.class).list();
         }
     }
 
@@ -43,18 +52,11 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public void update(User user, String[] params) {
+    public void update(User user) {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
-            if (params.length >= 3) {
-                user.setName(params[0]);
-                user.setEmail(params[1]);
-                user.setAge(Integer.parseInt(params[2]));
-            }
-
             session.merge(user);
             transaction.commit();
         }

@@ -35,6 +35,10 @@ public class User {
         createdAt = LocalDateTime.now();
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
