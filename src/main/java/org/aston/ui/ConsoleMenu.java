@@ -62,7 +62,7 @@ public class ConsoleMenu {
 
     private void listUsers() {
         List<User> users = userService.getAllUsers();
-        users.forEach(u -> System.out.printf("[%d] %s (%s)%n", u.getId(), u.getName(), u.getEmail()));
+        users.forEach(u -> System.out.printf("[%d] %s %d (%s)%n", u.getId(), u.getName(), u.getAge(), u.getEmail()));
         logger.info("Displayed {} users", users.size());
     }
 
@@ -72,7 +72,7 @@ public class ConsoleMenu {
 
         User user = userService.getUserById(id);
         if (user != null)
-            System.out.printf("ID: %d | Имя: %s | Email: %s%n", user.getId(), user.getName(), user.getEmail());
+            System.out.printf("ID: %d | Имя: %s | Возраст: %d | Email: %s%n", user.getId(), user.getName(), user.getAge(), user.getEmail());
 
         else
             System.out.println("Пользователь не найден.");
