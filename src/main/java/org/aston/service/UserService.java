@@ -1,19 +1,18 @@
 package org.aston.service;
 
-import org.aston.dao.Dao;
 import org.aston.dao.UserDao;
+import org.aston.dao.UserDaoImpl;
 import org.aston.exception.DaoException;
 import org.aston.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
-    private final Dao userDao = new UserDao();
+    private final UserDao userDao = new UserDaoImpl();
 
     public void addUser(String name, String email, int age) {
         User user = new User(name, email, age);
