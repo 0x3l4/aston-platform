@@ -4,6 +4,7 @@ import org.aston.exception.DaoException;
 import org.aston.model.User;
 import org.aston.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,15 @@ import java.util.Optional;
 
 public class UserDaoImpl implements UserDao<User> {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+    private final SessionFactory sessionFactory;
+
+    public UserDaoImpl() {
+        this.sessionFactory = HibernateUtil.getSessionFactory();
+    }
+
+    public UserDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public Optional<User> get(long id) {
