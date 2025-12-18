@@ -5,6 +5,7 @@ import org.aston.dto.UpdateUserRequest;
 import org.aston.dto.UserDto;
 import org.aston.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import org.springframework.beans.factory.annotation.Autowired;
