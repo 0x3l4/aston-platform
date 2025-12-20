@@ -3,7 +3,7 @@ package org.aston.notification.controller;
 import lombok.RequiredArgsConstructor;
 import org.aston.contract.event.UserEventType;
 import org.aston.notification.dto.NotificationRequest;
-import org.aston.notification.MailService;
+import org.aston.notification.service.MailService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

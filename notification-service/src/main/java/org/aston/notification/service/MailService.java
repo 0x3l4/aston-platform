@@ -1,7 +1,7 @@
-package org.aston.notification;
+package org.aston.notification.service;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MailService {
+
     private final JavaMailSender mailSender;
+
+    @Value("${app.mail.from}")
+    private String from;
 
     public void sendUserCreatedMail(String email) {
         send(email,
                 "Создание аккаунта",
-                "Здравствуйте! Ваш аккаунт на сайте ваш сайт был успешно создан.");
+                "Здравствуйте! Ваш аккаунт на сайте был успешно создан.");
     }
 
     public void sendUserDeletedMail(String email) {
@@ -25,10 +29,12 @@ public class MailService {
 
     private void send(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(Dotenv.load().get("MAIL_USERNAME"));
+        message.setFrom(from);
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
         mailSender.send(message);
     }
 }
+
+

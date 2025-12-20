@@ -2,27 +2,32 @@ spring:
   mail:
     host: localhost
     port: 3025
-    username: test
-    password: test
     protocol: smtp
-    properties:
-      mail.smtp.auth: false
-      mail.smtp.starttls.enable: false
 
+    username:
+    password:
+
+    properties:
+      mail:
+        smtp:
+          auth: false
+          ssl:
+            enable: false
+          starttls:
+            enable: false
   kafka:
+    user-topic: user-events
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-      consumer:
-        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-        properties:
-          spring.json.trusted.packages: "*"
-
-        group-id: notification-test
-        auto-offset-reset: earliest
+    consumer:
+      group-id: notification-service-test
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
 
 app:
-  kafka:
-    user-topic: user-events
+  mail:
+    from: no-reply@test.local

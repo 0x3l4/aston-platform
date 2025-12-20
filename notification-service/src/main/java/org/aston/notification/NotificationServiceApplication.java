@@ -14,9 +14,6 @@ public class NotificationServiceApplication {
 		System.setProperty("MAIL_USERNAME", dotenv.get("MAIL_USERNAME"));
 		System.setProperty("MAIL_PASSWORD", dotenv.get("MAIL_PASSWORD"));
 
-
-
 		SpringApplication.run(NotificationServiceApplication.class, args);
 	}
-
 }
