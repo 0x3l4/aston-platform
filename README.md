@@ -150,3 +150,57 @@
 ## События
 
 user-service публикует события `CREATE` и `DELETE`, которые обрабатываются notification-service и преобразуются в email-уведомления.
+
+---
+
+## Настройка и запуск приложения
+
+Для локального запуска сервисов используются переменные окружения, задаваемые через файл `.env`.
+
+В корне репозитория присутствует шаблон:
+
+```
+.env.example
+```
+
+### Шаги настройки
+
+1. Скопируйте файл примера:
+
+```
+cp .env.example .env
+```
+
+2. Заполните значения переменных в файле `.env`:
+
+```env
+DB_URL=jdbc:postgresql://localhost:5432/mydb
+DB_USER=postgres
+DB_PASS=secret
+
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=example@gmail.com
+MAIL_PASSWORD=your_app_password
+```
+
+---
+
+### Описание переменных
+
+#### База данных (user-service)
+
+* `DB_URL` — JDBC URL PostgreSQL
+* `DB_USER` — пользователь базы данных
+* `DB_PASS` — пароль пользователя базы данных
+
+Используется для хранения и управления пользователями.
+
+#### Почтовый сервер (notification-service)
+
+* `MAIL_HOST` — SMTP хост
+* `MAIL_PORT` — SMTP порт
+* `MAIL_USERNAME` — email отправителя
+* `MAIL_PASSWORD` — пароль приложения (использовался Yandex App Password)
+
+Используется для отправки email-уведомлений о событиях пользователя.
