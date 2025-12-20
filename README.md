@@ -5,7 +5,6 @@
 
 Формат данных: **JSON**
 Протокол: **HTTP/REST**
-Аутентификация: отсутствует
 
 ---
 
@@ -25,7 +24,7 @@
   "name": "Ivan Ivanov",
   "email": "user@example.com",
   "age": 25,
-  "createdAt": "2024-01-01T12:00:00"
+  "createdAt": "2025-01-01T12:00:00"
 }
 ```
 
@@ -44,7 +43,7 @@
     "name": "Ivan Ivanov",
     "email": "user@example.com",
     "age": 25,
-    "createdAt": "2024-01-01T12:00:00"
+    "createdAt": "2025-01-01T12:00:00"
   }
 ]
 ```
@@ -204,3 +203,7 @@ MAIL_PASSWORD=your_app_password
 * `MAIL_PASSWORD` — пароль приложения (использовался Yandex App Password)
 
 Используется для отправки email-уведомлений о событиях пользователя.
+
+---
+
+3. Настройки Kafka (v4.1.1 + KRaft) в `infra/server.properties`
