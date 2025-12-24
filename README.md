@@ -1,14 +1,14 @@
 # API
 
-* **user-service** — CRUD API для управления пользователями
-* **notification-service** — сервис email-уведомлений о событиях пользователей
+- **user-service** — CRUD API для управления пользователями
+- **notification-service** — сервис email-уведомлений о событиях пользователей
 
 Формат данных: **JSON**
 Протокол: **HTTP/REST**
 
 ---
 
-## user-service
+## user-service (localhost:8082)
 
 Базовый URL:
 
@@ -56,8 +56,8 @@
 
 **Ответы**:
 
-* `200 OK` — пользователь найден
-* `404 Not Found` — пользователь не найден
+- `200 OK` — пользователь найден
+- `404 Not Found` — пользователь не найден
 
 ---
 
@@ -77,14 +77,14 @@
 
 Валидация:
 
-* `name`: 3–30 символов, не пустое
-* `email`: корректный email
-* `age`: от 13 до 130
+- `name`: 3–30 символов, не пустое
+- `email`: корректный email
+- `age`: от 13 до 130
 
 **Ответ 201 Created**
 
-* Header `Location: /users/{id}`
-* Тело: `UserDto`
+- Header `Location: /users/{id}`
+- Тело: `UserDto`
 
 ---
 
@@ -118,7 +118,7 @@
 
 ---
 
-## notification-service
+## notification-service (localhost:8081)
 
 Базовый URL:
 
@@ -139,8 +139,8 @@
 
 `eventType`:
 
-* `CREATE` — пользователь создан
-* `DELETE` — пользователь удалён
+- `CREATE` — пользователь создан
+- `DELETE` — пользователь удалён
 
 Ответ: `200 OK`, тело отсутствует.
 
@@ -189,18 +189,18 @@ MAIL_PASSWORD=your_app_password
 
 #### База данных (user-service)
 
-* `DB_URL` — JDBC URL PostgreSQL
-* `DB_USER` — пользователь базы данных
-* `DB_PASS` — пароль пользователя базы данных
+- `DB_URL` — JDBC URL PostgreSQL
+- `DB_USER` — пользователь базы данных
+- `DB_PASS` — пароль пользователя базы данных
 
 Используется для хранения и управления пользователями.
 
 #### Почтовый сервер (notification-service)
 
-* `MAIL_HOST` — SMTP хост
-* `MAIL_PORT` — SMTP порт
-* `MAIL_USERNAME` — email отправителя
-* `MAIL_PASSWORD` — пароль приложения (использовался Yandex App Password)
+- `MAIL_HOST` — SMTP хост
+- `MAIL_PORT` — SMTP порт
+- `MAIL_USERNAME` — email отправителя
+- `MAIL_PASSWORD` — пароль приложения (использовался Yandex App Password)
 
 Используется для отправки email-уведомлений о событиях пользователя.
 
