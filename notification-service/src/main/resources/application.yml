@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: notification-service
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -31,5 +33,7 @@ app:
   kafka:
     user-topic: user-events
 
-server:
-  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

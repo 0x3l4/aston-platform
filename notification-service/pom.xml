@@ -16,13 +16,6 @@
 	<name>notification-service</name>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>com.icegreen</groupId>
 			<artifactId>greenmail-junit5</artifactId>
@@ -94,6 +87,7 @@
 			<artifactId>awaitility</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 
 	</dependencies>
 
