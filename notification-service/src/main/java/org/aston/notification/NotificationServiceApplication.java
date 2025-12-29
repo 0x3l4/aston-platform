@@ -1,6 +1,7 @@
 package org.aston.notification;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.aston.notification.service.MailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
