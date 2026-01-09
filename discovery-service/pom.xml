@@ -6,7 +6,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ================= PARENT ================= -->
     <parent>
         <groupId>org.aston</groupId>
         <artifactId>aston-platform</artifactId>
@@ -14,46 +13,36 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <!-- ================= ARTIFACT ================= -->
     <artifactId>discovery-service</artifactId>
     <name>discovery-service</name>
     <packaging>jar</packaging>
 
-    <!-- ================= DEPENDENCIES ================= -->
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <!-- Actuator (health, info) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- Lombok (optional, но обычно везде) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
-    <!-- ================= BUILD ================= -->
     <build>
         <plugins>
-
-            <!-- Spring Boot plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

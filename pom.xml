@@ -13,7 +13,6 @@
 
     <name>aston-platform</name>
 
-    <!-- ================= MODULES ================= -->
     <modules>
         <module>common-contracts</module>
         <module>config-service</module>
@@ -23,26 +22,20 @@
         <module>discovery-service</module>
     </modules>
 
-    <!-- ================= PROPERTIES ================= -->
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Spring -->
         <spring-boot.version>3.5.7</spring-boot.version>
         <spring-cloud.version>2025.0.1</spring-cloud.version>
 
-        <!-- Libs -->
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.34</lombok.version>
         <testcontainers.version>1.19.8</testcontainers.version>
     </properties>
 
-    <!-- ================= DEPENDENCY MANAGEMENT ================= -->
     <dependencyManagement>
         <dependencies>
-
-            <!-- Spring Boot BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -51,7 +44,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Spring Cloud BOM -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -60,7 +52,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Testcontainers BOM -->
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>
@@ -69,12 +60,12 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- MapStruct -->
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
@@ -88,8 +79,6 @@
                 <scope>test</scope>
             </dependency>
 
-
-            <!-- Lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -97,7 +86,6 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- Internal module -->
             <dependency>
                 <groupId>org.aston</groupId>
                 <artifactId>common-contract</artifactId>
@@ -107,12 +95,9 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- ================= BUILD ================= -->
     <build>
         <pluginManagement>
             <plugins>
-
-                <!-- Compiler -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -125,7 +110,6 @@
                     </configuration>
                 </plugin>
 
-                <!-- Spring Boot -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
