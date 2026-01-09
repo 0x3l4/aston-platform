@@ -1,42 +1,12 @@
-server:
-  port: 0
-
 spring:
   application:
     name: notification-service
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: notification-service
-      auto-offset-reset: latest
-      enable-auto-commit: true
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
 
+  config:
+    import: "optional:configserver:"
 
-  mail:
-    host: ${MAIL_HOST}
-    port: ${MAIL_PORT}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
-    protocol: smtps
-    properties:
-      mail:
-        smtp:
-          auth: true
-          ssl:
-            enable: true
-          starttls:
-            enable: true
-
-
-app:
-  kafka:
-    user-topic: user-events
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service

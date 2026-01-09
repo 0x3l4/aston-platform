@@ -1,44 +1,12 @@
-server:
-  port: 8080
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
 spring:
+  application:
+    name: user-service-route
+
+  config:
+    import: "optional:configserver:"
+
   cloud:
-    gateway:
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/api/v1/users/**
-          filters:
-            - StripPrefix=2
-            - name: CircuitBreaker
-              args:
-                name: userServiceCircuitBreaker
-                fallbackUri: forward:/fallback/user-service
-      httpclient:
-        connect-timeout: 2000
-        response-timeout: 3s
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      userServiceCircuitBreaker:
-        slidingWindowType: COUNT_BASED
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 3
-        minimumNumberOfCalls: 5
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,circuitbreakers,circuitbreakerevents
-
-
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service

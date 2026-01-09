@@ -10,6 +10,7 @@ public class NotificationServiceApplication {
 
 	public static void main(String[] args) {
 		Dotenv dotenv = Dotenv.load();
+
 		System.setProperty("MAIL_HOST", dotenv.get("MAIL_HOST"));
 		System.setProperty("MAIL_PORT", dotenv.get("MAIL_PORT"));
 		System.setProperty("MAIL_USERNAME", dotenv.get("MAIL_USERNAME"));

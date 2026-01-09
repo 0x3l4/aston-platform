@@ -1,28 +1,12 @@
-server:
-  port: 0
-
 spring:
   application:
     name: user-service
 
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASS}
+  config:
+    import: "optional:configserver:"
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
